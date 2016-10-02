@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Simulador</title>
+ 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<div class="container-fluid position-absolute width-height align-vertical-horizontal hide" id="idloading">
+		<div class="preloader-wrapper big active">
+	      	<div class="spinner-layer spinner-blue">
+		        <div class="circle-clipper left">
+		          	<div class="circle"></div>
+		        </div><div class="gap-patch">
+		          	<div class="circle"></div>
+		        </div><div class="circle-clipper right">
+		          	<div class="circle"></div>
+		        </div>
+	      	</div>
+		</div>
+	</div>
+
+
+	<div class="container-fluid height-up-vh" id="idsimulador">
+		
+		<div class="container-fluid height-up-vh">
+			<div class="row">
+				<div class="col s12 center-align">
+					<h4 class="title">Informacion Estadistica</h4>
+					<h5 class="title">Cantidad <span id="idcantidad">0</span></h5>
+				</div>
+			</div>	
+		</div>
+		
+		<div class="container-fluid height-middle-vh">
+			<div class="row height-up-calle margin-padding-clean">
+				<div class="col s12 border-up-calle">
+					
+				</div>
+			</div>
+
+			<div class="row height-middle-calle margin-padding-clean">
+				<div class="col s12 position-relative width-full height-full margin-padding-clean hide-element background-calle" id="idcalle">
+				</div>
+			</div>
+
+			<div class="row height-down-calle margin-padding-clean">
+				<div class="col s12 border-down-calle margin-padding-clean align-vertical-horizontal">
+					<a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="btnestadisticas">
+						<i class="material-icons right">trending_up</i>Estadisticas
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+
+	  	<!-- Modal Structure -->
+	  	<div id="modal1" class="modal">
+		    <div class="modal-content">
+		    	<h4 class="center-align">Graficos Estadisticos</h4>
+		    	<canvas id="myChart"></canvas>
+		    </div>
+	    	<div class="modal-footer">
+	      		<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>
+		    </div>
+	  	</div>
+
+		<div class="container-fluid height-down-vh">
+			<div class="row margin-padding-clean">
+				<div class="col s12 center-align">
+					<div class="row margin-padding-clean align-vertical-horizontal">
+						<div class="col 2">
+							<select id="selectTimeStart" class="display-select">
+								<option>07:00</option>
+								<option>08:00</option>
+								<option>09:00</option>
+								<option>10:00</option>
+								<option>11:00</option>
+								<option>12:00</option>
+								<option>13:00</option>
+								<option>14:00</option>
+								<option>15:00</option>
+								<option>16:00</option>
+								<option>17:00</option>
+								<option>18:00</option>
+								<option>19:00</option>
+								<option>20:00</option>
+								<option>21:00</option>
+								<option>22:00</option>
+								<option>23:00</option>
+							</select>	
+						</div>
+						<div class="col 2">
+							<select id="selectTimeEnd" class="display-select">
+								<option>07:00</option>
+								<option>08:00</option>
+								<option>09:00</option>
+								<option>10:00</option>
+								<option>11:00</option>
+								<option>12:00</option>
+								<option>13:00</option>
+								<option>14:00</option>
+								<option>15:00</option>
+								<option>16:00</option>
+								<option>17:00</option>
+								<option>18:00</option>
+								<option>19:00</option>
+								<option>20:00</option>
+								<option>21:00</option>
+								<option>22:00</option>
+								<option>23:00</option>
+							</select>
+						</div>
+						<div class="col 2">
+							<select id="selectStreet" class="display-select">
+								<option>21 DE MAYO</option>
+								<option>24 DE SEPTIEMBRE</option>
+								<option>6 DE AGOSTO</option>
+								<option>ARENALES</option>
+								<option>AROMA</option>
+								<option>AYACUCHO</option>
+								<option>BALLIVIAN</option>
+								<option>BENI</option>
+								<option>BOLIVAR</option>
+								<option>BUENOS AIRES</option>
+								<option>CABALLERO</option>
+								<option>CHARCAS</option>
+								<option>CHUQUISACA</option>
+								<option>COCHABAMBA</option>
+								<option>CUELLAR</option>
+								<option>FLORIDA</option>
+								<option>INDEPENDENCIA</option>
+								<option>INGAVI</option>
+								<option>JUNIN</option>
+								<option>LA PAZ</option>
+								<option>LIBERTAD</option>
+								<option>MURILLO</option>
+								<option>PARI</option>
+								<option>POTOSI</option>
+								<option>QUIJARRO</option>
+								<option>RENE MORENO</option>
+								<option>SEOANE</option>
+								<option>SUAREZ DE FIGUEROA</option>
+								<option>SUCRE</option>
+								<option>VELASCO</option>
+								<option>WARNES</option>
+								<option>NUFLO DE CHAVEZ</option>
+							</select>
+						</div>
+						<div class="col 2">
+							<select id="selectStreetA" class="display-select">
+								<option>10 DE AGOSTO</option>
+								<option>11 DE AGOSTO</option>
+								<option>12 DE AGOSTO</option>
+								<option>13 DE AGOSTO</option>
+								<option>21 DE MAYO</option>
+								<option>24 DE SEPTIEMBRE</option>
+								<option>6 DE AGOSTO</option>
+								<option>ARENALES</option>
+								<option>AROMA</option>
+								<option>AYACUCHO</option>
+								<option>BALLIVIAN</option>
+								<option>BENI</option>
+								<option>BOLIVAR</option>
+								<option>BUENOS AIRES</option>
+								<option>CABALLERO</option>
+								<option>CHARCAS</option>
+								<option>CHUQUISACA</option>
+								<option>COCHABAMBA</option>
+								<option>CUELLAR</option>
+								<option>FLORIDA</option>
+								<option>INDEPENDENCIA</option>
+								<option>INGAVI</option>
+								<option>JUNIN</option>
+								<option>LA PAZ</option>
+								<option>LIBERTAD</option>
+								<option>MURILLO</option>
+								<option>QUIJARRO</option>
+								<option>RENE MORENO</option>
+								<option>SEOANE</option>
+								<option>SUARES DE FIGUEROA</option>
+								<option>SUCRE</option>
+								<option>VELASCO</option>
+								<option>WARNES</option>
+								<option>NUFLO DE CHAVEZ</option>
+							</select>
+						</div>
+						<div class="col 2">
+							<select id="selectStreetB" class="display-select">
+								<option>24 DE SEPTIEMBRE</option>
+								<option>ANGAVI</option>
+								<option>ARENALES</option>
+								<option>AROMA</option>
+								<option>AYACUCHO</option>
+								<option>BALLIVIAN</option>
+								<option>BENI</option>
+								<option>BOLIVAR</option>
+								<option>BUENOS AIRES</option>
+								<option>CABALLERO</option>
+								<option>CHARCAS</option>
+								<option>CHUQISACA</option>
+								<option>COCHABAMBA</option>
+								<option>FLORIDA</option>
+								<option>INDEPENDENCIA</option>
+								<option>INGAVI</option>
+								<option>JUNIN</option>
+								<option>LA PAZ</option>
+								<option>LIBERTAD</option>
+								<option>MURILLO</option>
+								<option>PARI</option>
+								<option>POTOSI</option>
+								<option>QUIJARRO</option>
+								<option>RENE MORENO</option>
+								<option>SEOANE</option>
+								<option>SUAREZ DE FIGUEROA</option>
+								<option>SUCRE</option>
+								<option>WARNES</option>
+								<option>NUFLO DE CHAVEZ</option>
+							</select>
+						</div>
+						<div class="col 2">
+							<button class="btn" id="bntiniciar">Iniciar</button>		
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s2">
+							<input type="checkbox" id="hombre">
+							<label for="hombre" class="color-hombre">Hombre</label>
+							<span id="countHombre" class="color-hombre">0</span>
+						</div>
+						<div class="col s2">
+							<input type="checkbox" id="mujer">
+							<label for="mujer" class="color-mujer">Mujer</label>
+							<span id="countMujer" class="color-mujer">0</span>
+						</div>
+						<div class="col s2">
+							<input type="checkbox" id="ninia">
+							<label for="ninia" class="color-ninia">Ninia</label>
+							<span id="countNinia" class="color-ninia">0</span>
+						</div>
+						<div class="col s2">
+							<input type="checkbox" id="anciano">
+							<label for="anciano" class="color-anciano">Anciano</label>
+							<span id="countAnciano" class="color-anciano">0</span>
+						</div>
+						<div class="col s2">
+							<input type="checkbox" id="ninio">
+							<label for="ninio" class="color-ninio">Ninio</label>
+							<span id="countNinio" class="color-ninio">0</span>
+						</div>
+						<div class="col s2">
+							<input type="checkbox" checked id="all">
+							<label for="all">Todos</label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s2">
+							<input type="checkbox" id="particular">
+							<label for="particular" class="color-particular">Particular</label>
+							<span id="countParticular" class="color-particular">0</span>
+						</div>
+						<div class="col s2">
+							<input type="checkbox" id="taxi">
+							<label for="taxi" class="color-taxi">Taxi</label>
+							<span id="countTaxi" class="color-taxi">0</span>
+						</div>
+						<div class="col s2">
+							<input type="checkbox" id="bicicleta">
+							<label for="bicicleta" class="color-bicicleta">Bicicleta</label>
+							<span id="countBicicleta" class="color-bicicleta">0</span>
+						</div>
+						<div class="col s2">
+							<input type="checkbox" id="motocicleta">
+							<label for="motocicleta" class="color-motocicleta">Motocicleta</label>
+							<span id="countMotocicleta" class="color-motocicleta">0</span>
+						</div>
+						<div class="col s2">
+							<input type="checkbox" id="publico">
+							<label for="publico" class="color-publico">Publico</label>
+							<span id="countPublico" class="color-publico">0</span>
+						</div>
+						<div class="col s2">
+							<input type="checkbox" id="repartidor">
+							<label for="repartidor" class="color-repartidor">Repartidor</label>
+							<span id="countRepartidor" class="color-repartidor">0</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>
